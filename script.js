@@ -206,7 +206,7 @@ btnTransfer.addEventListener("click", function (e) {
 btnLoan.addEventListener("click", function (e) {
   e.preventDefault();
 
-  const amount = +inputLoanAmount.value;
+  const amount = Math.floor(inputLoanAmount.value);
 
   if (
     amount > 0 &&
@@ -255,32 +255,63 @@ btnSort.addEventListener("click", function (e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-console.log(23 === 23.0);
+// console.log(23 === 23.0);
 
-console.log(0.1 + 0.2);
-console.log(0.1 + 0.2 === 3);
+// console.log(0.1 + 0.2);
+// console.log(0.1 + 0.2 === 3);
 
-console.log(+"23");
+// console.log(+"23");
 
-console.log(Number.parseInt("30px", 10)); //number needs to be first 10 for base 10
-console.log(Number.parseInt("e23", 10));
+// console.log(Number.parseInt("30px", 10)); //number needs to be first 10 for base 10
+// console.log(Number.parseInt("e23", 10));
 
-console.log(Number.parseFloat("2.5rem"));
-console.log(Number.parseInt("2.5rem"));
+// console.log(Number.parseFloat("2.5rem"));
+// console.log(Number.parseInt("2.5rem"));
 
-//check if value is not NaN
-console.log(Number.isNaN(20));
-console.log(Number.isNaN("20"));
-console.log(Number.isNaN(+"20X"));
-console.log(Number.isNaN(23 / 0));
+// //check if value is not NaN
+// console.log(Number.isNaN(20));
+// console.log(Number.isNaN("20"));
+// console.log(Number.isNaN(+"20X"));
+// console.log(Number.isNaN(23 / 0));
 
-//check of value is number --preferred method
-console.log(Number.isFinite(20));
-console.log(Number.isFinite("20"));
-console.log(Number.isFinite(+"20X"));
-console.log(Number.isFinite(23 / 0));
+// //check of value is number --preferred method
+// console.log(Number.isFinite(20));
+// console.log(Number.isFinite("20"));
+// console.log(Number.isFinite(+"20X"));
+// console.log(Number.isFinite(23 / 0));
 
-//check if value is integer
-console.log(Number.isInteger(23));
-console.log(Number.isInteger(23.0));
-console.log(Number.isInteger(23 / 0));
+// //check if value is integer
+// console.log(Number.isInteger(23));
+// console.log(Number.isInteger(23.0));
+// console.log(Number.isInteger(23 / 0));
+
+// console.log(Math.sqrt(25));
+// console.log(25 ** (1 / 2));
+// console.log(8 ** (1 / 3));
+
+// console.log(Math.max(5, 18, 23, 11, 2));
+// console.log(Math.min(5, 18, 23, 11, 2));
+
+// console.log(Math.PI * Number.parseFloat("10px") ** 2);
+
+// //random number max included min excluded
+// console.log(Math.random());
+// console.log(Math.random() * 6) + 1;
+// console.log(Math.trunc(Math.random() * 6) + 1);
+
+// //random number min and max included
+// const randomInt = (min, max) =>
+//   Math.trunc(Math.random() * (max - min) + 1) + min;
+
+// //rounding int
+// console.log(Math.trunc(23.546)); //takes off any decimals = 23
+// console.log(Math.round(23.546)); //rounds to nearest int = 24
+
+// console.log(Math.ceil(23.3)); //rounds up
+// console.log(Math.ceil(23.9));
+
+// console.log(Math.floor(23.3)); //rounds down
+// console.log(Math.floor(23.9));
+
+// //rounding decimals
+// console.log((2.756741).toFixed(3)); //always returns a string
