@@ -155,6 +155,21 @@ const updateUI = function (acc) {
 // Event handlers
 let currentAccount;
 
+//fake always logged in
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+
+const now = new Date();
+const day = `${now.getDate()}`.padStart(2, 0);
+const month = `${now.getMonth() + 1}`.padStart(2, 0);
+const year = now.getFullYear();
+const hour = now.getHours();
+const min = now.getMinutes();
+
+// month/day/year
+labelDate.textContent = `${month}/${day}/${year} ${hour}:${min}`;
+
 btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -315,3 +330,54 @@ btnSort.addEventListener("click", function (e) {
 
 // //rounding decimals
 // console.log((2.756741).toFixed(3)); //always returns a string
+
+//numeric seperators
+// const diameter = 287_460_000_000;
+// console.log(diameter);
+
+// const price = 345_99;
+// console.log(price);
+
+// const transferFee = 15_00;
+// console.log(transferFee);
+
+// const PI = 3.1415;
+// console.log(PI);
+
+//bigInt
+
+// console.log(54321654651651964166541984651654984);
+// console.log(54321654651651964166541984651654984n);
+
+// dates and times
+
+//create a date
+// const now = new Date();
+// console.log(now);
+
+// console.log(new Date("Jul 28 2022 12:22:00"));
+
+// console.log(new Date("December 25, 2021"));
+// console.log(new Date(account1.movementsDates[0]));
+
+// console.log(new Date(2037, 10, 19, 15, 23, 5));
+// console.log(new Date(2037, 10, 31));
+
+// const future = new Date(2307, 10, 19, 15, 23);
+// console.log(future);
+// console.log(future.getFullYear());
+// console.log(future.getMonth());
+// console.log(future.getDate());
+// console.log(future.getDay());
+// console.log(future.getHours());
+// console.log(future.getMinutes());
+// console.log(future.getSeconds());
+// console.log(future.toISOString());
+// console.log(future.getTime());
+
+// //current timestamp
+// console.log(Date.now());
+
+// //set versions of methods
+// future.setFullYear(2040);
+// console.log(future);
