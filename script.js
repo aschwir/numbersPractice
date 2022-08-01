@@ -186,14 +186,44 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const startLogOutTimer = function () {
+  const tick = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(Math.trunc(time % 60)).padStart(2, 0);
+
+    //in each call print remaining time to ui
+    labelTimer.textContent = `${min}:${sec}`;
+
+    //when time is at 0 seconds stop timer and log out user}, 1000);
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = "Log in to get started";
+      containerApp.style.opacity = 0;
+    }
+
+    //decrease 1s
+    time--;
+  };
+
+  //set time to 5 minutes
+  let time = 120;
+
+  //call timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
+
+  return timer;
+};
+
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+
+let currentAccount, timer;
 
 //fake always logged in
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
 
 btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
@@ -244,6 +274,9 @@ btnLogin.addEventListener("click", function (e) {
     inputLoginUsername.value = inputLoginPin.value = "";
     inputLoginPin.blur();
 
+    //timer
+    if (timer) clearInterval(timer);
+    timer = startLogOutTimer();
     // Update UI
     updateUI(currentAccount);
   }
@@ -273,6 +306,10 @@ btnTransfer.addEventListener("click", function (e) {
 
     // Update UI
     updateUI(currentAccount);
+
+    //reset timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -296,6 +333,10 @@ btnLoan.addEventListener("click", function (e) {
     }, 2500);
   }
   inputLoanAmount.value = "";
+
+  //reset timer
+  clearInterval(timer);
+  timer = startLogOutTimer();
 });
 
 btnClose.addEventListener("click", function (e) {
@@ -469,18 +510,18 @@ btnSort.addEventListener("click", function (e) {
 //   Intl.NumberFormat(navigator.language, options).format(num)
 // );
 
-const ingredients = ["olives", "onion"];
-// setTimeout(callbackFunction, time in milliseconds until function it called)
-const pizzaTimer = setTimeout(
-  (ing1, ing2) => console.log(`here is your pizza with ${ing1} and ${ing2}`),
-  3000,
-  ...ingredients
-);
-console.log("waiting...");
+// const ingredients = ["olives", "onion"];
+// // setTimeout(callbackFunction, time in milliseconds until function it called)
+// const pizzaTimer = setTimeout(
+//   (ing1, ing2) => console.log(`here is your pizza with ${ing1} and ${ing2}`),
+//   3000,
+//   ...ingredients
+// );
+// console.log("waiting...");
 
-if (ingredients.includes("spinach")) clearTimeout(pizzaTimer);
+// if (ingredients.includes("spinach")) clearTimeout(pizzaTimer);
 
-setInterval(function () {
-  const now = new Date();
-  console.log(now);
-}, 1000);
+// setInterval(function () {
+//   const now = new Date();
+//   console.log(now);
+// }, 1000);
